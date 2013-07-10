@@ -1,0 +1,25 @@
+{
+    "name": "fudge/parsi",
+    "type": "library",
+    "description": "CSV manipulation and queries",
+    "keywords": ["csv", "read", "write", "query", "find"],
+
+    "authors": [
+        {
+            "name": "Ben Colegate",
+            "email": "ben@bencolegate.co.uk"
+        }
+    ],
+
+    "license": "MIT",
+
+    "autoload": {
+        "psr-0": {
+            "Parsi": "./lib"
+        }
+    },
+
+    "require": {
+        "php": ">= 5.3.0"
+    }
+}
