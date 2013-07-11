@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Parsi by BennyC</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/BennyC/Parsi">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/BennyC/Parsi/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/BennyC/Parsi/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Parsi</h1>
+          <p>Easily edit and read your CSV's. Query them too!</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/BennyC">BennyC</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="fudgeparsi" class="anchor" href="#fudgeparsi"><span class="octicon octicon-link"></span></a><em>Fudge\Parsi</em>
+</h1>
+
+<p><em>Easily edit and read your CSV's. Query them too!</em></p>
+
+<h2>
+<a name="project-setup" class="anchor" href="#project-setup"><span class="octicon octicon-link"></span></a>Project Setup</h2>
+
+<p>In terminal/commandline:</p>
+
+<pre><code>composer require fudge/parsi [dev-master]
+</code></pre>
+
+<p>Or you can add this to your <code>composer.json</code>:</p>
+
+<pre><code>"require": {
+    "fudge/parsi": "dev-master"
+}
+</code></pre>
+
+<h2>
+<a name="unit-tests" class="anchor" href="#unit-tests"><span class="octicon octicon-link"></span></a>Unit Tests</h2>
+
+<p>I am proud to say that Fudge\Parsi is <em>100%</em> covered by unit tests.
+PHPUnit version used is <em>~2.7.33</em>.</p>
+
+<ol>
+<li><code>./vendor/bin/phpunit</code></li>
+</ol><p>If you wish to make modifications to the <code>phpunit.xml.dist</code>, please create your own
+<code>phpunit.xml</code> to override what is currently being used in the dist file.</p>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<h3>
+<a name="reading-csvs" class="anchor" href="#reading-csvs"><span class="octicon octicon-link"></span></a>Reading CSVs</h3>
+
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">require_once</span> <span class="s1">'./vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$file</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">SplFileObject</span><span class="p">(</span><span class="s1">'path/to/csv.csv'</span><span class="p">);</span>
+<span class="nv">$csv</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">\Parsi\Readers\Csv</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+
+<span class="c1">// Headers may be included.</span>
+<span class="c1">// $csv-&gt;headers(true)-&gt;load();</span>
+<span class="c1">// OR</span>
+<span class="c1">// $csv = new \Parsi\Readers\Csv($file, $headers = true);</span>
+
+<span class="nv">$array</span> <span class="o">=</span> <span class="nv">$csv</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">();</span> <span class="c1">// Returns an array of the data found within the file</span>
+</pre></div>
+
+<h3>
+<a name="writing-csvs" class="anchor" href="#writing-csvs"><span class="octicon octicon-link"></span></a>Writing CSVs</h3>
+
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">require_once</span> <span class="s1">'./vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'Ben'</span><span class="p">,</span> <span class="s1">'Hello, World!'</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'Kev'</span><span class="p">,</span> <span class="s1">'Shiny Shoes!'</span><span class="p">),</span>
+<span class="p">);</span>
+
+<span class="nv">$file</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SplFileObject</span><span class="p">(</span><span class="s1">'path/to/creation.csv'</span><span class="p">,</span> <span class="s1">'w+'</span><span class="p">);</span> <span class="c1">// Please ensure you use 'w+'</span>
+<span class="nv">$csv</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">\Parsi\Writers\Csv</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+
+<span class="c1">// Data may be set during construction like so;</span>
+<span class="c1">// new \Parsi\Writers\Csv($file, $data);</span>
+
+<span class="nv">$csv</span><span class="o">-&gt;</span><span class="na">setData</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span> <span class="c1">// File will now be created.</span>
+</pre></div>
+
+<h3>
+<a name="querying-csvs" class="anchor" href="#querying-csvs"><span class="octicon octicon-link"></span></a>Querying CSVs</h3>
+
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">require_once</span> <span class="s1">'./vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$file</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">SplFileObject</span><span class="p">(</span><span class="s1">'path/to/csv.csv'</span><span class="p">);</span>
+<span class="nv">$csv</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">\Parsi\Readers\Csv</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="nx">\Parsi\Query</span><span class="o">::</span><span class="na">query</span><span class="p">(</span><span class="nv">$csv</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'='</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// Similar syntax to Laravel Fluent/Eloquent.</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * $data will now be populated with a multi-dimensional array with keys 1, 2</span>
+<span class="sd"> * which match the where clause</span>
+<span class="sd"> */</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</pre></div>
+
+<h2>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p><em>To Come...</em></p>
+
+<h2>
+<a name="contributing-changes" class="anchor" href="#contributing-changes"><span class="octicon octicon-link"></span></a>Contributing changes</h2>
+
+<p>Please feel free to open pull requests for new features/bugs.</p>
+
+<p>If you find bugs but do not have the time to fix them yourself, please open an issue.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
