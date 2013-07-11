@@ -17,8 +17,9 @@ Or you can add this to your `composer.json`:
 ## Unit Tests
 
 I am proud to say that Fudge\Parsi is *100%* covered by unit tests.
+PHPUnit version used is _~2.7.33_.
 
-1. `phpunit`
+1. `./vendor/bin/phpunit`
 
 If you wish to make modifications to the `phpunit.xml.dist`, please create your own
 `phpunit.xml` to override what is currently being used in the dist file.
@@ -79,7 +80,7 @@ $data = $query->get();
 
 ## Documentation
 
-__To Come...__
+_To Come..._
 
 ## Contributing changes
 
