@@ -1,5 +1,6 @@
 vendor
 coverage
+docs
 *.sublime-*
 
 create-test.csv
