@@ -4,6 +4,7 @@
     "description": "CSV manipulation and queries",
     "keywords": ["csv", "read", "write", "query", "find"],
     "homepage": "http://bennyc.github.io/Parsi",
+    "version" : "1.0.1",
 
     "authors": [
         {

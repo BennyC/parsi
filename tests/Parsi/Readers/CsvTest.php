@@ -49,7 +49,7 @@ class CsvTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingOfHeadersRow()
     {
-        $result = $this->csv->headers()->load()->data();
+        $result = $this->csv->headers()->data();
         $this->assertArrayHasKey('one', $result[0], 'Assert associative keys have been made in comparison to the first row of the CSV.');
     }
 

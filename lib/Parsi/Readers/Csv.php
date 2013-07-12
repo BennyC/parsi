@@ -85,6 +85,8 @@ class Csv implements \Parsi\Interfaces\Reader
     public function headers($headers = true)
     {
         $this->headers = $headers;
+        $this->load();
+
         return $this;
     }
 
