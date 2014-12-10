@@ -25,7 +25,7 @@ class Csv
     public function __construct(SplFileObject $file, $data = array())
     {
         $this->file = $file;
-        $this->data = $this->setData($data);
+        $this->setData($data);
     }
 
     /**
